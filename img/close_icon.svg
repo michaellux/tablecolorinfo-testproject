@@ -1,0 +1,13 @@
+<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="close_icon" clip-path="url(#clip0_1_877)">
+<g id="Group 70">
+<rect id="Rectangle 3" width="1.06064" height="11.6671" transform="matrix(0.707115 0.707099 -0.707115 0.707099 16.25 8)" fill="#777777"/>
+<rect id="Rectangle 3.1" width="1.06064" height="11.6671" transform="matrix(-0.707114 0.707099 -0.707114 -0.707099 16.9999 16.25)" fill="#777777"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1_877">
+<rect width="25" height="25" fill="white"/>
+</clipPath>
+</defs>
+</svg>

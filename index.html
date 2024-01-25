@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Таблица цветов</title>
+</head>
+<body>
+  <template id="ColorInfoWindowTemplate">
+    <style>
+      :host {
+        width: 42.4375rem;
+        height: 23.75rem;
+        border-radius: 1.25rem;
+        background: #313131;
+        display: block;
+        position: relative;
+      }
+  
+      :host h1 {
+        color: #FFF;
+        font-family: 'Lato', sans-serif;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        padding: 1.25rem 0;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+    <div id="color-info-window">
+      <h1>Таблица цветов</h1>
+      <color-info-button-container>
+  
+      </color-info-button-container>
+    </div>
+  </template>
+
+  <template id="SaveAllColorInfoButtonTemplate">
+    <style>
+      :host .btn{
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    </style>
+    <button class="btn" id="save-all-color-info-button" is="save-all-color-info-button">
+      <img src="./img/save_icon.svg" alt="Кнопка «button»">
+    </button>
+  </template>
+  <template id="CloseColorInfoWindowButtonTemplate">
+    <style>
+      :host .btn {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    </style>
+    <button id="close-color-info-window-button" class="btn" is="close-color-info-window-button">
+      <img src="./img/close_icon.svg" alt="Кнопка «button»">
+    </button>
+  </template>
+  <template id="ColorInfoButtonContainerTemplate">
+    <style>
+      :host {
+        position: absolute;
+        right: 1rem;
+        top: 1.25rem;
+        display: flex;
+        flex-direction: row;
+        gap: 0.62rem;
+      }
+    </style>
+    <div class="color-info-button-container">
+      <save-all-color-info-button></save-all-color-info-button>
+      <close-color-info-window-button></close-color-info-window-button>
+    </div>
+  </template>
+
+  <color-info-window></color-info-window>
+
+
+  <script type="module">
+    import { ColorInfoWindow } from './color-info-window.js';
+    import { ColorInfoButtonContainer } from './color-info-button-container.js';
+    import { SaveAllColorInfoButton } from './buttons/save-all-color-info-button.js';
+    import { CloseColorInfoWindowButton } from './buttons/close-color-info-window-button.js';
+    import { CloseColorInfoWindowEventTarget } from './buttons/close-color-info-window-event-target.js';
+    let closeColorInfoEventTarget = new CloseColorInfoWindowEventTarget();
+    Object.defineProperty(CloseColorInfoWindowButton.prototype, 'closeColorInfoEventTarget', { value: closeColorInfoEventTarget });
+    Object.defineProperty(ColorInfoWindow.prototype, 'closeColorInfoEventTarget', { value: closeColorInfoEventTarget });
+    window.customElements.define(
+        'close-color-info-window-button',
+        CloseColorInfoWindowButton);
+    window.customElements.define('color-info-window', ColorInfoWindow);
+  </script>
+</body>
+</html>
